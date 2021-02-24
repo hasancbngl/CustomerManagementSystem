@@ -3,6 +3,6 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        printStar.printStar();
+        printStar.printStar(6);
     }
 }

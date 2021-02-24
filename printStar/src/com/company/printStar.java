@@ -3,18 +3,22 @@ package com.company;
 public class printStar {
     private static int count = 1;
 
-    public static void printStar() {
-        for(int i=0;i<6;i++) {
-            printasCount(count);
+    public static void printStar(int lineNumber) {
+        for(int i=0;i<lineNumber;i++) {
+            System.out.println(printasCount(count));
+            System.out.println("");
             if(count%2==1) count++;
             else count = count +2;
         }
     }
-    public static void printasCount(int number) {
-        for(int j=1;j<=number;j++) {
-            System.out.print("*");
+    public static String printasCount(int number) {
+        if(number<=1) {
+            return "*";
         }
-        System.out.println("");
+        else {
+            return "*" + printasCount(number-1);
+        }
+
     }
 }
 
