@@ -47,7 +47,7 @@ public class OrderController {
             @Validated @RequestBody Order orderDetails) throws ResourceNotFoundException {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found for that id" + orderId));
-        order.setOrders(orderDetails.getOrders());
+
         order.setAmount(orderDetails.getAmount());
         order.setCustomer(orderDetails.getCustomer());
         order.setDetails(orderDetails.getDetails());

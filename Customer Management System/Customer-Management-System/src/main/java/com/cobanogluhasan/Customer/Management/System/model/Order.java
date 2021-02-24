@@ -1,12 +1,14 @@
 package com.cobanogluhasan.Customer.Management.System.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 
 @Entity
-@Table
+@Table(name = "orders")
 public class Order {
     @Id
     @SequenceGenerator(
@@ -24,20 +26,14 @@ public class Order {
 
     //ManytoOne relationship. Orders or one order can be related to one customer
     @ManyToOne
+    @JoinColumn(name = "customer", nullable = false)
     private Customer customer;
 
-    @ManyToOne
-    //join table it'll hold the relationship  between orders table and customers table
-    @JoinTable(name = "customers_order", joinColumns = @JoinColumn(name ="order_id" ),
-             inverseJoinColumns = @JoinColumn(name = "customers_id"))
-    private Set<Order> orders = new HashSet<>();
 
-    public Order() {
-    }
-
-    public Order(String details, int amount) {
+    public Order(String details, int amount, Customer customer) {
         this.details = details;
         this.amount = amount;
+        this.customer = customer;
     }
 
     public long getId() {
@@ -72,13 +68,6 @@ public class Order {
         this.customer = customer;
     }
 
-    public Set<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
-    }
 
     @Override
     public String toString() {
@@ -87,7 +76,6 @@ public class Order {
                 ", details='" + details + '\'' +
                 ", amount=" + amount +
                 ", customer=" + customer +
-                ", orders=" + orders +
                 '}';
     }
 }

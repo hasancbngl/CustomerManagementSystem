@@ -1,5 +1,7 @@
 package com.cobanogluhasan.Customer.Management.System.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -7,7 +9,7 @@ import java.util.Set;
 
 //An entity represents a table stored in a database
 @Entity
-@Table
+@Table(name = "customers")
 public class Customer {
     //generate unique id
     @Id
@@ -25,7 +27,7 @@ public class Customer {
     private String email;
 
     //OnetoMany annoations basically one customer can have many orders
-    @OneToMany(mappedBy = "customers")
+    @OneToMany(mappedBy = "customer")
     private Set<Order> orders = new HashSet<>();
 
     public Customer() {
@@ -78,5 +80,4 @@ public class Customer {
                 ", orders=" + orders +
                 '}';
     }
-
 }
