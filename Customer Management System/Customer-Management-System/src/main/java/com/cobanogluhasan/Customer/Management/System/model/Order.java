@@ -2,11 +2,11 @@ package com.cobanogluhasan.Customer.Management.System.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
-@SuppressWarnings("ALL")
+
 @Entity
+@Table
 public class Order {
     @Id
     @SequenceGenerator(
@@ -22,6 +22,7 @@ public class Order {
     private String details;
     private int amount;
 
+    //ManytoOne relationship. Orders or one order can be related to one customer
     @ManyToOne
     private Customer customer;
 

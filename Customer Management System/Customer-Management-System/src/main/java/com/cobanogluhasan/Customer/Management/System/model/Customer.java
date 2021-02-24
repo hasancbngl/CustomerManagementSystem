@@ -9,6 +9,7 @@ import java.util.Set;
 @Entity
 @Table
 public class Customer {
+    //generate unique id
     @Id
     @SequenceGenerator(
             name = "customer_sequence",
@@ -23,6 +24,7 @@ public class Customer {
     private String fullName;
     private String email;
 
+    //OnetoMany annoations basically one customer can have many orders
     @OneToMany(mappedBy = "customers")
     private Set<Order> orders = new HashSet<>();
 
