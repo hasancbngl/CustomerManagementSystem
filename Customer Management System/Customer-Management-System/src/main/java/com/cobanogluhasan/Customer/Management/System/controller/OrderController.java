@@ -3,7 +3,6 @@ package com.cobanogluhasan.Customer.Management.System.controller;
 import com.cobanogluhasan.Customer.Management.System.exception.ResourceNotFoundException;
 import com.cobanogluhasan.Customer.Management.System.model.Order;
 import com.cobanogluhasan.Customer.Management.System.repository.OrderRepository;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

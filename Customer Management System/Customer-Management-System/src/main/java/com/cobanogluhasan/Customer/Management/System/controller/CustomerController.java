@@ -2,7 +2,6 @@ package com.cobanogluhasan.Customer.Management.System.controller;
 
 import com.cobanogluhasan.Customer.Management.System.exception.ResourceNotFoundException;
 import com.cobanogluhasan.Customer.Management.System.model.Customer;
-import com.cobanogluhasan.Customer.Management.System.model.Order;
 import com.cobanogluhasan.Customer.Management.System.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,7 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
-    //get customers
+    //Http request. get all the customers
     @GetMapping("customers")
     public List<Customer> getCustomers() {
         return this.customerRepository.findAll();
