@@ -1,5 +1,6 @@
 package com.cobanogluhasan.Customer.Management.System.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -25,10 +26,14 @@ public class Order {
     private int amount;
 
     //ManytoOne relationship. Orders or one order can be related to one customer
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "customer", nullable = false)
     private Customer customer;
 
+    public Order() {
+
+    }
 
     public Order(String details, int amount, Customer customer) {
         this.details = details;

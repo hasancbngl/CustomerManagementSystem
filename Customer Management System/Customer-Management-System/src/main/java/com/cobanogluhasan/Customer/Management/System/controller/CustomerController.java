@@ -16,8 +16,11 @@ import java.util.Map;
 @RequestMapping( "/api/v1/")
 public class CustomerController {
 
-    @Autowired
     private CustomerRepository customerRepository;
+
+    public CustomerController(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     //Http request. get all the customers
     @GetMapping("customers")
@@ -26,9 +29,9 @@ public class CustomerController {
     }
 
     //get customer by id
-    @GetMapping("/customers/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable(value = "id") Long customerId)
-     throws ResourceNotFoundException {
+    @GetMapping("/customers/{customerId}")
+    public ResponseEntity<Customer> getCustomerById(@PathVariable Long customerId)
+            throws ResourceNotFoundException {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found for that id" + customerId));
         return ResponseEntity.ok().body(customer);

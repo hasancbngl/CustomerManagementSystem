@@ -1,5 +1,6 @@
 package com.cobanogluhasan.Customer.Management.System.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class Customer {
     private String email;
 
     //OnetoMany annoations basically one customer can have many orders
+    @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private Set<Order> orders = new HashSet<>();
 
